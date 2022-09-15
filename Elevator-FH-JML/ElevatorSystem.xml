@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="Elevator">
+			<and mandatory="true" name="Base">
+				<or mandatory="true" name="LiftSystem">
+					<graphics key="collapsed" value="true"/>
+					<feature name="ContinueInDirection"/>
+					<feature name="StopRrequested"/>
+				</or>
+				<or mandatory="true" name="Specfications">
+					<graphics key="collapsed" value="true"/>
+					<feature name="Specification1"/>
+					<feature name="Specification2"/>
+					<feature name="Specification3"/>
+					<feature name="Specification9"/>
+					<feature name="Specification13"/>
+					<feature name="Specification14"/>
+				</or>
+				<or mandatory="true" name="Actions">
+					<graphics key="collapsed" value="false"/>
+					<or name="CallRequest">
+						<graphics key="collapsed" value="true"/>
+						<feature name="CallBigMac"/>
+						<feature name="CallAlice"/>
+						<feature name="CallBob"/>
+						<feature name="CallAngelina"/>
+						<feature name="CallChuck"/>
+						<feature name="CallMonica"/>
+					</or>
+					<feature name="PressLiftButton"/>
+				</or>
+				<alt mandatory="true" name="Test">
+					<graphics key="collapsed" value="true"/>
+					<feature name="Random"/>
+					<feature name="SpecifiedSpecification"/>
+				</alt>
+			</and>
+			<feature name="overloaded"/>
+			<feature name="ExecutiveFloor"/>
+			<feature name="TwoThirdsFull"/>
+			<feature name="Empty"/>
+			<feature name="Weight"/>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<imp>
+				<var>Specification1</var>
+				<conj>
+					<var>CallBigMac</var>
+					<conj>
+						<var>CallAngelina</var>
+						<var>LiftSystem</var>
+					</conj>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>Specification2</var>
+				<conj>
+					<var>CallBigMac</var>
+					<var>LiftSystem</var>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>Specification3</var>
+				<conj>
+					<var>CallBob</var>
+					<var>LiftSystem</var>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>Specification13</var>
+				<conj>
+					<var>CallAlice</var>
+					<conj>
+						<var>CallAngelina</var>
+						<conj>
+							<var>CallBob</var>
+							<var>LiftSystem</var>
+						</conj>
+					</conj>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>Specification14</var>
+				<conj>
+					<var>CallBob</var>
+					<conj>
+						<var>CallBigMac</var>
+						<var>LiftSystem</var>
+					</conj>
+				</conj>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>Random</var>
+				<conj>
+					<var>Actions</var>
+					<var>CallRequest</var>
+				</conj>
+			</imp>
+		</rule>
+	</constraints>
+</featureModel>
